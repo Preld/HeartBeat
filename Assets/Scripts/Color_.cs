@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Color : MonoBehaviour
+public class Color_ : MonoBehaviour
 {
 	/*
 	//variables for calibration
@@ -10,10 +10,11 @@ public class Color : MonoBehaviour
 	private float timer = 0.0f;
 	private const float CALIBRATION_TIME = 3.0f;
 	*/
-	private float sinData = 0.0f;	//for test
+	private float sinData = 0.0f;
+	//for test
 
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		/*
 		m_C2B = GameObject.FindGameObjectWithTag("BIOPAC").GetComponent<Connect2Biopac>();
@@ -28,8 +29,10 @@ public class Color : MonoBehaviour
 	//private float before_data = 0.0f;
 
 	//additional variables
-	private Vector3 min_size = new Vector3(10.0f, 10.0f, 10.0f);	//通常状態Scale
-	private Vector3 max_size = new Vector3(12.0f, 12.0f, 12.0f);	//拍動状態Scale
+	private Vector3 min_size = new Vector3 (10.0f, 10.0f, 10.0f);
+	//通常状態Scale
+	private Vector3 max_size = new Vector3 (12.0f, 12.0f, 12.0f);
+	//拍動状態Scale
 	private float threshold_shot;
 	private float threshold_audio;
 	private float percent_audio = 0.7f;
@@ -49,20 +52,20 @@ public class Color : MonoBehaviour
 			max_shot = Mathf.Max (max_shot, m_C2B.inputData);
 		}else{
 		*/
-			//for scale
-			if (sinData > threshold_shot) {
-				this.transform.localScale = max_size;
-			} else {
-				this.transform.localScale = min_size;
-			}
+		//for scale
+		if (sinData > threshold_shot) {
+			this.transform.localScale = max_size;
+		} else {
+			this.transform.localScale = min_size;
+		}
 
-			//for color
-			this.renderer.material.color = new UnityEngine.Color(1, 1 - sinData / max_shot, 1- sinData / max_shot);
+		//for color
+		this.renderer.material.color = new UnityEngine.Color (1, 1 - sinData / max_shot, 1 - sinData / max_shot);
 
-			//for audio
-			if (sinData > threshold_audio && !this.audio.isPlaying) {
-				this.audio.Play ();
-			}
+		//for audio
+		if (sinData > threshold_audio && !this.audio.isPlaying) {
+			this.audio.Play ();
+		}
 		//}
 	}
 }
