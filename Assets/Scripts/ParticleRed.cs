@@ -5,62 +5,70 @@ using System;
 public class ParticleRed : MonoBehaviour
 {
 	//variables for calibration
-	//private Connect2Biopac m_C2B;
+	private ConnectInterface devices;
 	private float timer = 0.0f;
 	private const float CALIBRATION_TIME = 3.5f;
-
-	private float sinData = 0.0f;	//for test
+	private float[] data;
+	private float signal;
 
 	// Use this for initialization
 	void Start () 
 	{
-		//m_C2B = GameObject.FindGameObjectWithTag("BIOPAC").GetComponent<Connect2Biopac>();
+		devices = GameObject.FindGameObjectWithTag ("Arduino").GetComponent<Connect2Arduino> ();
+		devices.setPort ("COM3", 115200, 1);
+		//("/dev/tty.usbmodem14121", 115200);
+		//("/dev/tty.usbmodem1451", 115200);
+		//("COM3", 115200);
 		timer = CALIBRATION_TIME;
 	}
-
-	//for threshold
-	private float max_shot = 10.0f;
+	
+	//variables
+	private float max_shot = 0.0f;
 	private float min_shot = 0.0f;
-	//private bool shot = false;
-	//private float before_data = 0.0f;
-
-	//additional variables
-	private float scale;
 	private float threshold;
 	private float percent = 0.7f;
-	private float amp;
+	private float scale;
+
 
 	// Update is called once per frame
 	void Update ()
 	{
 		//疑似心拍 for test
-		sinData = Mathf.Sin (5.0f * Time.time) * 10.0f + 10.0f;
-		//Debug.Log (sinData);
+		/*
+		data = Mathf.Sin (5.0f * Time.time) * 10.0f + 10.0f;
+		Debug.Log (data);
 		threshold = max_shot * percent;
+		*/
+
+		data = devices.getVoltages ();
+		signal = data [0];
+		//Debug.Log (signal);
 
 		if ((timer - Time.time) >= 0.0) {
-			//for BIOPAC
-			//max_shot = Mathf.Max (max_shot, m_C2B.inputData);
-			//min_shot = Mathf.Min (min_shot, m_C"B.inputData);
+			max_shot = Mathf.Max (max_shot, signal);
+			min_shot = Mathf.Min (min_shot, signal);
+			threshold = max_shot * percent;
 
 			//for test
-			max_shot = Mathf.Max (max_shot, sinData);
-			min_shot = Mathf.Min (min_shot, sinData);
+			/*
+			max_shot = Mathf.Max (max_shot, signal);
+			min_shot = Mathf.Min (min_shot, signal);
+			*/
 		}else{
 
 			//for scale
-			scale = (sinData - min_shot) / (max_shot - min_shot) * 5.0f + 20.0f;
+			scale = (signal - min_shot) / (max_shot - min_shot) * 5.0f + 20.0f;
 			this.transform.localScale = new Vector3 (scale, scale, scale);
 
 			//for light
-			this.light.intensity = (sinData - min_shot) / (max_shot - min_shot) + 1.0f;
-			this.light.color = new UnityEngine.Color(1.0f, (120.0f - sinData / (max_shot - min_shot) * 50.0f) / 255.0f, (120.0f - sinData / (max_shot - min_shot) * 50.0f) / 255.0f);
+			this.light.intensity = (signal - min_shot) / (max_shot - min_shot) + 1.0f;
+			this.light.color = new Color(1.0f, (120.0f - signal / (max_shot - min_shot) * 50.0f) / 255.0f, (120.0f - signal / (max_shot - min_shot) * 50.0f) / 255.0f);
 
 			//for particle 
-			this.particleSystem.startColor = new UnityEngine.Color(1.0f, (100.0f - sinData / (max_shot - min_shot) * 70.0f) / 255.0f, (100.0f - sinData / (max_shot - min_shot) * 70.0f) / 255.0f);
+			this.particleSystem.startColor = new Color(1.0f, (100.0f - signal / (max_shot - min_shot) * 70.0f) / 255.0f, (100.0f - signal / (max_shot - min_shot) * 70.0f) / 255.0f);
 			
 			//for audio
-			if (sinData > threshold && !this.audio.isPlaying) {
+			if (signal > threshold && !this.audio.isPlaying) {
 				this.audio.Play ();
 			}
 		}
