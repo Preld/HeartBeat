@@ -564,6 +564,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11459278, guid: 5d214816f088b644688c6d903b15b219, type: 2}
+      propertyPath: msg
+      value: 
+      objectReference: {fileID: 465993028}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d214816f088b644688c6d903b15b219, type: 2}
   m_RootGameObject: {fileID: 2080064887}
@@ -1100,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0207646a4fbc34416bd053eb6f9e8d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  msg: {fileID: 465993028}
 --- !u!82 &2080064890
 AudioSource:
   m_ObjectHideFlags: 0

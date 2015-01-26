@@ -455,7 +455,7 @@ MeshParticleEmitter:
   m_Systematic: 0
   m_MinNormalVelocity: 0
   m_MaxNormalVelocity: 0
-  m_Mesh: {fileID: 4300000, guid: f4453336e016a4d43a763972502a6cbf, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7e1a2a55b99df4c208007a543ca2bb3f, type: 3}
 --- !u!114 &557638527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,9 +465,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 557638520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 515cac7122e49a64b854eb1a704d637d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d316e02fbcae4128a2ed051dd3c1ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  msg: {fileID: 1019143840}
 --- !u!23 &557638528
 Renderer:
   m_ObjectHideFlags: 0
@@ -509,7 +510,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1290000937}
   m_GameObject: {fileID: 557638520}
-  m_Mesh: {fileID: 4300000, guid: f4453336e016a4d43a763972502a6cbf, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7e1a2a55b99df4c208007a543ca2bb3f, type: 3}
 --- !u!4 &557638531
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,6 +1037,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .970588207
       objectReference: {fileID: 0}
+    - target: {fileID: 11446392, guid: ef44205f844b1ea44ae02d3f7151f333, type: 2}
+      propertyPath: msg
+      value: 
+      objectReference: {fileID: 1019143840}
     m_RemovedComponents:
     - {fileID: 11446394, guid: ef44205f844b1ea44ae02d3f7151f333, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ef44205f844b1ea44ae02d3f7151f333, type: 2}

@@ -21,11 +21,17 @@ public class Connect2Arduino : MonoBehaviour,ConnectInterface
 				OpenConnection ();
 		}
 
+		public string getErrorMessage()
+		{
+			return errorMessage;
+		}
+
 		#endregion
 
 		private SerialPort sp;
 		private int inputNum;
 		private float[] inputVoltages;
+		private string errorMessage;
 
 		// Use this for initialization
 		void Start ()
@@ -101,6 +107,7 @@ public class Connect2Arduino : MonoBehaviour,ConnectInterface
 						if (useData) {
 								Debug.Log ("Error 1: " + errorpiece);
 								useData = false;
+								errorMessage = errorpiece.ToString();
 						}
 				}
 
@@ -117,6 +124,7 @@ public class Connect2Arduino : MonoBehaviour,ConnectInterface
 						if (sp.IsOpen) {
 								sp.Close ();
 								Debug.LogError ("Failed to open Serial Port, already open!");
+								errorMessage = "Failed to open Serial Port, already open!";
 						} else {
 								try {
 										sp.Open ();
@@ -124,6 +132,7 @@ public class Connect2Arduino : MonoBehaviour,ConnectInterface
 										Debug.Log ("Open Serial port");
 								} catch {
 										Debug.Log ("Failed to open Serial Port");
+										errorMessage = "Failed to open Serial Port";
 								}
 						}
 				}

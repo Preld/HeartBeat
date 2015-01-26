@@ -113,6 +113,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11441154, guid: a0df9d1990ea3b749a113f8a129d272b, type: 2}
+      propertyPath: msg
+      value: 
+      objectReference: {fileID: 1884633861}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0df9d1990ea3b749a113f8a129d272b, type: 2}
   m_RootGameObject: {fileID: 505110490}
@@ -422,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b7b255f036848e8bde563236836aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  msg: {fileID: 1884633861}
 --- !u!199 &505110494
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
