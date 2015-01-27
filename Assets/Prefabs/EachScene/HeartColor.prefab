@@ -59,7 +59,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159278}
-  m_Mesh: {fileID: 4300000, guid: f4453336e016a4d43a763972502a6cbf, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7e1a2a55b99df4c208007a543ca2bb3f, type: 3}
 --- !u!82 &8259278
 AudioSource:
   m_ObjectHideFlags: 1
@@ -126,7 +126,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159278}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f4453336e016a4d43a763972502a6cbf, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 7e1a2a55b99df4c208007a543ca2bb3f, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2410e31dcabc60d4b9fd78b13ac5b75f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0207646a4fbc34416bd053eb6f9e8d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000
